@@ -1,6 +1,17 @@
 msg = "Welkom bij strandweer informatie"
 print(msg)
 
+# bestand plaatsnamen.txt wordt geopend om te lezen met de read-method
+my_file = open("plaatsnamen.txt", "r")
+# inhoud van bestand wordt gelezen en opgeslagen als string variabele genaamd "content"
+content = my_file.read()
+# inhoud van string variabele genaamd "content" wordt gesplitst en opgeslagen als list variabele genaamd "lijst_met_plaatsnamen"
+lijst_met_plaatsnamen = content.split(",")
+# bestand plaatsnamen.txt wordt gesloten
+my_file.close()
+# list variabele genaamd "lijst_met_plaatsnamen" wordt geprint
+print(lijst_met_plaatsnamen)
+
 ##lijst_met_plaatsnamen = [Scheveningen0, Katwijk1, Zandvoort2, Noordwijk3]
 ##print(lijst_met_plaatsnamen)
 ##indices = [0, 2]
