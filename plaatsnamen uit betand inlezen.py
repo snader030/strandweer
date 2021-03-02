@@ -1,0 +1,6 @@
+my_file = open("plaatsnamen.txt", "r")
+content = my_file.read()
+print(content)
+lijst_met_plaatsnamen = content.split(",")
+my_file.close()
+print(lijst_met_plaatsnamen)
