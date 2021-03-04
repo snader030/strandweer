@@ -10,8 +10,6 @@ content = my_file.read()
 lijst_met_plaatsnamen = content.split(",")
 # bestand plaatsnamen.txt wordt gesloten
 my_file.close()
-# list variabele genaamd "lijst_met_plaatsnamen" wordt geprint
-##print(lijst_met_plaatsnamen)
 
 import inquirer
 
