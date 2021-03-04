@@ -1,6 +1,7 @@
+print("\n")
 msg = "Welkom bij strandweer informatie"
 print(msg)
-
+print("\n")
 # bestand plaatsnamen.txt wordt geopend om te lezen met de read-method
 my_file = open("plaatsnamen.txt", "r")
 # inhoud van bestand wordt gelezen en opgeslagen als string variabele genaamd "content"
@@ -10,30 +11,23 @@ lijst_met_plaatsnamen = content.split(",")
 # bestand plaatsnamen.txt wordt gesloten
 my_file.close()
 # list variabele genaamd "lijst_met_plaatsnamen" wordt geprint
-print(lijst_met_plaatsnamen)
-
-##lijst_met_plaatsnamen = [Scheveningen0, Katwijk1, Zandvoort2, Noordwijk3]
 ##print(lijst_met_plaatsnamen)
-##indices = [0, 2]
-##selected_elements = []
-##Initialize result list
 
-##for index in indices:
-##    selected_elements.append(a_list[index])
-##Add chosen items to result list
+import inquirer
 
-##print(selected_elements)
+questions = [
+    inquirer.List(
+        "Plaatsnaam_keuze",
+        message="Beste gebruiker, kies een badplaats d.m.v pijltjestoetsen en enter om een keuze te maken",
+        choices=(lijst_met_plaatsnamen),
+    ),
+]
+answers = inquirer.prompt(questions)
+q = answers["Plaatsnaam_keuze"]
 
-plaatsnaam = input("Beste gebruiker kies een badplaats: ")
-
-print("U heeft gekozen voor de badplaats: " + plaatsnaam)
-
-## link = "https://api.openweathermap.org/data/2.5/forecast/?q=scheveningen&units=metric&cnt=5&appid=a7f9e1a6b04a8b787e857547840c3a36"
 import requests
 import json
 
-q = plaatsnaam
-## q = "scheveningen"
 appid = "a7f9e1a6b04a8b787e857547840c3a36"
 url = (
     "https://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s&units=metric&cnt=5"
@@ -43,24 +37,8 @@ url = (
     )
 )
 
-##url = "https://api.openweathermap.org/data/2.5/forecast/?q=london&units=metric&cnt=5&appid=a7f9e1a6b04a8b787e857547840c3a36"
-##url = "https://api.openweathermap.org/data/2.5/forecast/?q=scheveningen&units=metric&cnt=5&appid=a7f9e1a6b04a8b787e857547840c3a36"
-
 response = requests.get(url)
 data = json.loads(response.text)
-
-##print(data["list"][0]["main"]["temp"])
-##print(data["list"][1]["main"]["temp"])
-##print(data["list"][2]["main"]["temp"])
-##print(data["list"][3]["main"]["temp"])
-##print(data["list"][4]["main"]["temp"])
-##print(data)
-
-##temp0 = data["list"][0]["main"]["temp"]
-##temp1 = data["list"][1]["main"]["temp"]
-##temp2 = data["list"][2]["main"]["temp"]
-##temp3 = data["list"][3]["main"]["temp"]
-##temp4 = data["list"][4]["main"]["temp"]
 
 temp0 = data["list"][0]["main"]["feels_like"]
 temp1 = data["list"][1]["main"]["feels_like"]
